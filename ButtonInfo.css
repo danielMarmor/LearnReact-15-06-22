@@ -1,0 +1,35 @@
+.app-content{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:center;
+}
+.lblPos{
+    margin:20px 5px 20px 0px;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-weight: bold; 
+}
+
+.lblPos.active{
+    color: green;
+}
+.lblPos.notActive{
+    color:red;
+}
+
+.btnHover{
+    margin:20px 5px 20px 0px;
+    padding: 0;
+    width: 200px;
+    height: 200px;
+    background-color:darkgray;
+    border-radius: 10px;
+    border: 2px solid black;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-weight: bold; 
+}

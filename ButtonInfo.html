@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+       content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" >  
+    </script>
+    <script crossorigin 
+        src="https://unpkg.com/react@16/umd/react.production.min.js">
+    </script>
+    <script crossorigin 
+        src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js">
+    </script> 
+    <link href="./ButtonInfo.css" rel="stylesheet">
+    <title>Document</title>  
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        class ButtonInfo extends React.Component {
+            //notInTange = 'Not In Range';
+            state ={
+                posX :  'Not In Range',
+                posY :  'Not In Range',
+                isActive : false
+            };
+            handleMouseEnter =(e)=>{
+                this.setState({
+                    isActive : true,
+                    posX :  e.pageX,
+                    posY :  e.pageY
+                });
+            };
+            handleMouseLeave =(e)=>{
+                this.setState({
+                    isActive : false,
+                    posX : 'Not In Range',
+                    posY :  'Not In Range',
+                });
+            }; 
+            handleMouseMove =(e)=>{
+                if (this.state.isActive){
+                    this.setState({
+                    isActive : true,
+                    posX :  e.pageX,
+                    posY :  e.pageY,
+                });
+                }
+            };            
+            render(){
+                return(
+                    <div className="app-content">
+                        <label className={`lblPos ${this.state.isActive ? 'active' :'notActive'}`}>X : {this.state.posX}</label>
+                        <label className={`lblPos ${this.state.isActive ? 'active' :'notActive'}`}>Y : {this.state.posY}</label>
+                        <button className="btnHover"
+                            onMouseEnter={this.handleMouseEnter}
+                            onMouseLeave={this.handleMouseLeave}
+                            onMouseMove={this.handleMouseMove}
+                            >detect x,y
+                        </button>                     
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(<ButtonInfo/>, document.getElementById('app')); 
+    </script>
+</body>
+</html>

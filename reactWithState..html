@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+       content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" >  
+    </script>
+    <script crossorigin 
+        src="https://unpkg.com/react@16/umd/react.production.min.js">
+    </script>
+    <script crossorigin 
+        src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js">
+    </script> 
+    <title>Document</title>  
+</head>
+<div id="app"></div>
+    <script type="text/babel">
+        class App extends React.Component {
+            state ={
+                name : 'Ryu',
+                age :30
+            };
+            handleMouseOver =(e)=>{
+                console.log(e.target, e.pageX);
+            }
+            handleClick =(e)=>{
+                console.log(e.target);
+                console.log(this.state);
+                console.log('--------------------');
+                for (let f in e){
+                    console.log(`${f} : ${e[f]}`);
+                }
+                console.log('--------------------');
+                this.setState({
+                    age:this.state.age + 1
+                });
+            }
+            handleCopy =(e)=>{
+                console.log('I am Copiyng!');
+            }
+            render(){
+                return(
+                    <div className="app-content">
+                        <p>My Name is {this.state.name} and i am {this.state.age} years old!                       
+                        </p>
+                        <button onClick={this.handleClick}>Click Me</button>
+                        <button onMouseOver={this.handleMouseOver}>Hover Me</button>
+                        <p onCopy={this.handleCopy}>What we think - We Become!</p>
+                    </div>
+                )
+            }              
+        }
+        ReactDOM.render(<App/>, document.getElementById('app')); 
+    </script>
